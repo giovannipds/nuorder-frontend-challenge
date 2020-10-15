@@ -1,6 +1,14 @@
 import React from "react";
+// import React, { Component } from 'react'
 import logo from "./logo.svg";
 import "./App.css";
+import Select from "react-select";
+
+const options = [
+  { value: "chocolate", label: "Chocolate" },
+  { value: "strawberry", label: "Strawberry" },
+  { value: "vanilla", label: "Vanilla" },
+];
 
 function App() {
   return (
@@ -13,7 +21,21 @@ function App() {
         >
           <img src={logo} className="App-logo" alt="NuORDER" />
         </a>
-        <p>Lorem ipsum dolor sit amet</p>
+        <p>
+          Search issues at{" "}
+          <a
+            className="App-link"
+            href="https://github.com/facebook/react/issues"
+            target="_blank"
+            title="Open repository issues"
+          >
+            Facebook React's <abbr title="repository">repo</abbr>
+          </a>
+          :
+        </p>
+        <span className="Select-container">
+          <Select options={options} placeholder="Select issue..." />
+        </span>
         <a
           className="App-link"
           href="https://github.com/giovannipds"
