@@ -5,6 +5,7 @@ const api = axios.create({
   headers: {
     Accept: "application/vnd.github.v3+json",
   },
+  timeout: 3000,
 });
 
 const repo = "facebook/react";
