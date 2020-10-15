@@ -1,16 +1,24 @@
-import React from "react";
+import React, { useState } from "react";
 import logo from "./logo.svg";
 import "./App.css";
 import AsyncSelect from "react-select/async";
 import { searchIssues } from "./services/issues";
 
 function App() {
+  const [issue, setIssue] = useState("");
+
   const loadOptions = async (inputValue, callback) => {
     const issues = await searchIssues(inputValue);
     const options = issues.map((issue) => {
       return { label: issue.title, value: "" };
     });
     callback(options);
+  };
+
+  const handleInputChange = (newValue) => {
+    const inputValue = newValue.replace(/\W/g, "");
+    setIssue(inputValue);
+    return inputValue;
   };
 
   return (
@@ -41,9 +49,9 @@ function App() {
           <AsyncSelect
             cacheOptions
             loadOptions={loadOptions}
-            defaultOptions
-            placeholder="Select issue..."
-            // onInputChange={this.handleInputChange}
+            menuIsOpen={issue}
+            onInputChange={handleInputChange}
+            placeholder="Start typing..."
           />
         </span>
         <a
