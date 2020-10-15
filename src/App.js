@@ -16,6 +16,7 @@ function App() {
       <header className="App-header">
         <a
           href="https://nu.nuorder.com/index.html"
+          rel="noopener noreferrer"
           target="_blank"
           title="Go to nuorder.com"
         >
@@ -26,6 +27,7 @@ function App() {
           <a
             className="App-link"
             href="https://github.com/facebook/react/issues"
+            rel="noopener noreferrer"
             target="_blank"
             title="Open repository issues"
           >
