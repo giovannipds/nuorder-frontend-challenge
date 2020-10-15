@@ -1,16 +1,18 @@
 import React from "react";
-// import React, { Component } from 'react'
 import logo from "./logo.svg";
 import "./App.css";
-import Select from "react-select";
-
-const options = [
-  { value: "chocolate", label: "Chocolate" },
-  { value: "strawberry", label: "Strawberry" },
-  { value: "vanilla", label: "Vanilla" },
-];
+import AsyncSelect from "react-select/async";
+import { searchIssues } from "./services/issues";
 
 function App() {
+  const loadOptions = async (inputValue, callback) => {
+    const issues = await searchIssues(inputValue);
+    const options = issues.map((issue) => {
+      return { label: issue.title, value: "" };
+    });
+    callback(options);
+  };
+
   return (
     <div className="App">
       <header className="App-header">
@@ -36,7 +38,13 @@ function App() {
           :
         </p>
         <span className="Select-container">
-          <Select options={options} placeholder="Select issue..." />
+          <AsyncSelect
+            cacheOptions
+            loadOptions={loadOptions}
+            defaultOptions
+            placeholder="Select issue..."
+            // onInputChange={this.handleInputChange}
+          />
         </span>
         <a
           className="App-link"
