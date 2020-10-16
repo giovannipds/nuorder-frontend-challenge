@@ -1,34 +1,19 @@
-:root {
-  /* colors */
-  --black: #000;
-  --cyan: #61dafb;
-  --dark-gray: #323232;
-  --white: #fff;
-  /* colors by functionality */
-  --bg-color: var(--white);
-  --text-color: var(--dark-gray);
-  --primary: var(--dark-gray);
-}
-
 .App {
-  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  align-items: center;
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  display: flex;
+  flex-direction: column;
+  font-size: calc(10px + 2vmin);
+  justify-content: center;
+  min-height: 100%;
+  padding: 15px;
   text-align: center;
 }
 
 .App-logo {
   height: 26px;
   pointer-events: none;
-}
-
-.App-header {
-  background-color: var(--bg-color);
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: var(--text-color);
 }
 
 .App-link {

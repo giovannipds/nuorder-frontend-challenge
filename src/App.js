@@ -48,30 +48,32 @@ function App() {
         >
           <img src={logo} className="App-logo" alt="NuORDER" />
         </a>
-        <p>
-          Issues for{" "}
-          <a
-            className="App-link"
-            href="https://github.com/facebook/react/issues"
-            rel="noopener noreferrer"
-            target="_blank"
-            title="Open repo issues"
-          >
-            Facebook React <abbr title="repository">repo</abbr>
-          </a>
-          :
-        </p>
-        <span className="Select-container">
-          <AsyncSelect
-            cacheOptions
-            loadOptions={loadOptions}
-            // menuIsOpen={issue}
-            noOptionsMessage={() => (issue ? "Found nothing" : "Type anything")}
-            onInputChange={handleInputChange}
-            placeholder="Search"
-            styles={customStyles}
-          />
-        </span>
+      </header>
+      <p>
+        Issues for{" "}
+        <a
+          className="App-link"
+          href="https://github.com/facebook/react/issues"
+          rel="noopener noreferrer"
+          target="_blank"
+          title="Open repo issues"
+        >
+          Facebook React <abbr title="repository">repo</abbr>
+        </a>
+        :
+      </p>
+      <span className="Select-container">
+        <AsyncSelect
+          cacheOptions
+          loadOptions={loadOptions}
+          // menuIsOpen={issue}
+          noOptionsMessage={() => (issue ? "Found nothing" : "Type anything")}
+          onInputChange={handleInputChange}
+          placeholder="Search"
+          styles={customStyles}
+        />
+      </span>
+      <footer>
         <small>
           <a
             className="App-link"
@@ -83,7 +85,7 @@ function App() {
             Giovanni Pires
           </a>
         </small>
-      </header>
+      </footer>
     </div>
   );
 }
