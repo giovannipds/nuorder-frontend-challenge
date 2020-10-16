@@ -1,0 +1,23 @@
+{
+  "files": {
+    "main.css": "/nuorder-frontend-challenge/static/css/main.16039916.chunk.css",
+    "main.js": "/nuorder-frontend-challenge/static/js/main.d8854922.chunk.js",
+    "main.js.map": "/nuorder-frontend-challenge/static/js/main.d8854922.chunk.js.map",
+    "runtime-main.js": "/nuorder-frontend-challenge/static/js/runtime-main.c48d2d69.js",
+    "runtime-main.js.map": "/nuorder-frontend-challenge/static/js/runtime-main.c48d2d69.js.map",
+    "static/js/2.e75835f5.chunk.js": "/nuorder-frontend-challenge/static/js/2.e75835f5.chunk.js",
+    "static/js/2.e75835f5.chunk.js.map": "/nuorder-frontend-challenge/static/js/2.e75835f5.chunk.js.map",
+    "index.html": "/nuorder-frontend-challenge/index.html",
+    "precache-manifest.1f6f496297feef5f5943303fc5f0525f.js": "/nuorder-frontend-challenge/precache-manifest.1f6f496297feef5f5943303fc5f0525f.js",
+    "service-worker.js": "/nuorder-frontend-challenge/service-worker.js",
+    "static/css/main.16039916.chunk.css.map": "/nuorder-frontend-challenge/static/css/main.16039916.chunk.css.map",
+    "static/js/2.e75835f5.chunk.js.LICENSE.txt": "/nuorder-frontend-challenge/static/js/2.e75835f5.chunk.js.LICENSE.txt",
+    "static/media/logo.svg": "/nuorder-frontend-challenge/static/media/logo.23779e18.svg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.c48d2d69.js",
+    "static/js/2.e75835f5.chunk.js",
+    "static/css/main.16039916.chunk.css",
+    "static/js/main.d8854922.chunk.js"
+  ]
+}
