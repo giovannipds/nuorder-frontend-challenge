@@ -107,11 +107,12 @@ function App() {
             loadingMessage={() => "Wait, loading..."}
             loadOptions={loadOptions}
             // menuIsOpen={searchTerm}
-            onChange={handleChange}
             noOptionsMessage={() => (searchTerm ? "Nothing" : "Type anything")}
+            onChange={handleChange}
             onInputChange={handleInputChange}
             placeholder="Search"
             styles={customStyles}
+            value={issue}
           />
         </span>
         {issue && (
