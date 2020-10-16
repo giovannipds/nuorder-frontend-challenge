@@ -62,6 +62,14 @@
   font-size: 14px;
 }
 
+.Footer .App-link {
+  text-decoration: none;
+}
+
+.Footer .App-link .App-link-label {
+  text-decoration: underline;
+}
+
 .Button-container {
   margin-bottom: 45px;
   width: 100%;

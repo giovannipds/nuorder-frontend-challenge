@@ -131,7 +131,10 @@ function App() {
           rel="noopener noreferrer"
           title="See dev's GitHub"
         >
-          Giovanni Pires
+          <span aria-label="With love" role="img">
+            ❤️
+          </span>{" "}
+          <span className="App-link-label">Giovanni Pires</span>
         </a>
       </footer>
     </div>
