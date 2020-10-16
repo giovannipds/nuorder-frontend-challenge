@@ -38,3 +38,7 @@ code {
 #root {
   height: 100%;
 }
+
+main {
+  width: 100%;
+}

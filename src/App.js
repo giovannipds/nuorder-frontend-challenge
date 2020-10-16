@@ -74,55 +74,59 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <a
-          className="App-logo"
-          href="https://nu.nuorder.com/index.html"
-          rel="noopener noreferrer"
-          target="_blank"
-          title="Go to nuorder.com"
-        >
-          <img src={logo} alt="NuORDER" />
-        </a>
-      </header>
-      <p>
-        Issues for{" "}
-        <a
-          className="App-link"
-          href="https://github.com/facebook/react/issues"
-          rel="noopener noreferrer"
-          target="_blank"
-          title="Open repo issues"
-        >
-          Facebook React <abbr title="repository">repo</abbr>
-        </a>
-        :
-      </p>
-      <span className="Select-container">
-        <AsyncSelect
-          cacheOptions
-          formatOptionLabel={formatOptionLabel}
-          loadingMessage={() => "Wait, loading..."}
-          loadOptions={loadOptions}
-          // menuIsOpen={searchTerm}
-          onChange={handleChange}
-          noOptionsMessage={() => (searchTerm ? "Nothing" : "Type anything")}
-          onInputChange={handleInputChange}
-          placeholder="Search"
-          styles={customStyles}
-        />
-      </span>
-      {issue && (
-        <div className="Button-container">
+        <h1 className="App-logo">
           <a
-            className="Button"
-            href={issue.html_url}
+            href="https://nu.nuorder.com/index.html"
             rel="noopener noreferrer"
             target="_blank"
+            title="Go to nuorder.com"
           >
-            Go to Issue #{issue.number}
+            <img src={logo} alt="NuORDER" />
           </a>
-        </div>
-      )}
+          <span>Front-end Challenge</span>
+        </h1>
+      </header>
+      <main>
+        <p>
+          Issues for{" "}
+          <a
+            className="App-link"
+            href="https://github.com/facebook/react/issues"
+            rel="noopener noreferrer"
+            target="_blank"
+            title="Open repo issues"
+          >
+            Facebook React <abbr title="repository">repo</abbr>
+          </a>
+          :
+        </p>
+        <span className="Select-container">
+          <AsyncSelect
+            cacheOptions
+            formatOptionLabel={formatOptionLabel}
+            loadingMessage={() => "Wait, loading..."}
+            loadOptions={loadOptions}
+            // menuIsOpen={searchTerm}
+            onChange={handleChange}
+            noOptionsMessage={() => (searchTerm ? "Nothing" : "Type anything")}
+            onInputChange={handleInputChange}
+            placeholder="Search"
+            styles={customStyles}
+          />
+        </span>
+        {issue && (
+          <div className="Button-container">
+            <a
+              className="Button"
+              href={issue.html_url}
+              rel="noopener noreferrer"
+              target="_blank"
+            >
+              Go to Issue #{issue.number}
+            </a>
+          </div>
+        )}
+      </main>
       <footer className="Footer">
         <a
           className="App-link"

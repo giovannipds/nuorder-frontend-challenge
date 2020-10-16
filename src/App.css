@@ -12,10 +12,19 @@
 }
 
 .App-logo {
-  outline: 0;
+  font-size: 16px;
+  font-weight: bold;
+  text-transform: uppercase;
 }
 
-.App-logo img {
+.App-logo a {
+  color: inherit;
+  display: block;
+  outline: 0;
+  text-decoration: none;
+}
+
+.App-logo a img {
   height: 26px;
 }
 
@@ -32,12 +41,15 @@
 }
 
 .Select-container {
+  display: block;
   margin-bottom: 30px;
   width: 100%;
 }
 
 @media (min-width: 768px) {
   .Select-container {
+    margin-right: auto;
+    margin-left: auto;
     max-width: 50%;
   }
 }
