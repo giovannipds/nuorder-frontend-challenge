@@ -16,18 +16,6 @@ const api = axios.create({
 
 const repo = "facebook/react";
 
-export const getIssues = async () => {
-  console.log("Getting issues...");
-  try {
-    const response = await api.get(`repos/${repo}/issues`);
-    const issues = response.data;
-    return issues;
-  } catch (error) {
-    console.error(error);
-    return [];
-  }
-};
-
 export const searchIssues = async (text) => {
   console.log("Searching issues...");
   const terms = [`repo:${repo}`];

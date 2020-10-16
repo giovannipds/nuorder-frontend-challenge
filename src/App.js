@@ -71,12 +71,6 @@ function App() {
     </div>
   );
 
-  // const buttonRef = useRef(null);
-
-  // useEffect(() => {
-  //   if (buttonRef.current) buttonRef.current.focus();
-  // }, [issue]);
-
   return (
     <div className="App">
       <header className="App-header">
@@ -122,7 +116,6 @@ function App() {
           <a
             className="Button"
             href={issue.html_url}
-            // ref={buttonRef}
             rel="noopener noreferrer"
             target="_blank"
           >
