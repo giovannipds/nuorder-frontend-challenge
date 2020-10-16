@@ -5,7 +5,7 @@ const api = axios.create({
   headers: {
     Accept: "application/vnd.github.v3+json",
   },
-  timeout: 3000,
+  timeout: 10000,
 });
 
 const repo = "facebook/react";
@@ -18,14 +18,15 @@ export const getIssues = async () => {
     return issues;
   } catch (error) {
     console.error(error);
+    return [];
   }
 };
 
 export const searchIssues = async (text) => {
   console.log("Searching issues...");
+  const terms = [`repo:${repo}`];
+  if (text) terms.push(text);
   try {
-    const terms = [`repo:${repo}`];
-    if (text) terms.push(text);
     const response = await api.get(`search/issues`, {
       params: {
         q: terms.join(" "),
@@ -35,5 +36,6 @@ export const searchIssues = async (text) => {
     return issues;
   } catch (error) {
     console.error(error);
+    return [];
   }
 };

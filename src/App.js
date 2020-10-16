@@ -1,18 +1,27 @@
-import React, { useState } from "react";
+import React, { useCallback, useState } from "react";
 import logo from "./logo.svg";
 import "./App.css";
 import AsyncSelect from "react-select/async";
 import { searchIssues } from "./services/issues";
+import debounce from "lodash.debounce";
 
 function App() {
   const [issue, setIssue] = useState("");
+  const delay = 600;
 
-  const loadOptions = async (inputValue, callback) => {
+  const loadOptions = useCallback(
+    debounce((inputValue, callback) => {
+      getOptions(inputValue).then((options) => callback(options));
+    }, delay),
+    []
+  );
+
+  const getOptions = async (inputValue) => {
     const issues = await searchIssues(inputValue);
     const options = issues.map((issue) => {
       return { label: issue.title, value: "" };
     });
-    callback(options);
+    return options;
   };
 
   const handleInputChange = (newValue) => {
@@ -33,15 +42,15 @@ function App() {
           <img src={logo} className="App-logo" alt="NuORDER" />
         </a>
         <p>
-          Search issues at{" "}
+          Issues for{" "}
           <a
             className="App-link"
             href="https://github.com/facebook/react/issues"
             rel="noopener noreferrer"
             target="_blank"
-            title="Open repository issues"
+            title="Open repo issues"
           >
-            Facebook React's <abbr title="repository">repo</abbr>
+            Facebook React <abbr title="repository">repo</abbr>
           </a>
           :
         </p>
@@ -49,20 +58,23 @@ function App() {
           <AsyncSelect
             cacheOptions
             loadOptions={loadOptions}
-            menuIsOpen={issue}
+            // menuIsOpen={issue}
+            noOptionsMessage={() => (issue ? "Found nothing" : "Type anything")}
             onInputChange={handleInputChange}
-            placeholder="Start typing..."
+            placeholder="Search"
           />
         </span>
-        <a
-          className="App-link"
-          href="https://github.com/giovannipds"
-          target="_blank"
-          rel="noopener noreferrer"
-          title="See candidate's GitHub"
-        >
-          Giovanni Pires
-        </a>
+        <small>
+          <a
+            className="App-link"
+            href="https://github.com/giovannipds"
+            target="_blank"
+            rel="noopener noreferrer"
+            title="See dev's GitHub"
+          >
+            Giovanni Pires
+          </a>
+        </small>
       </header>
     </div>
   );

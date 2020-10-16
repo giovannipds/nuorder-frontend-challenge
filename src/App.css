@@ -44,6 +44,11 @@
 
 .Select-container {
   margin-bottom: 30px;
-  max-width: 320px;
   width: 100%;
+}
+
+@media (min-width: 768px) {
+  .Select-container {
+    max-width: 50%;
+  }
 }
