@@ -1,10 +1,16 @@
 import axios from "axios";
 
+const bearerToken = process.env.REACT_APP_GITHUB_BEARER_TOKEN;
+
+const headers = {
+  Accept: "application/vnd.github.v3+json",
+};
+
+if (bearerToken) headers.Authorization = `Bearer ${bearerToken}`;
+
 const api = axios.create({
   baseURL: "https://api.github.com",
-  headers: {
-    Accept: "application/vnd.github.v3+json",
-  },
+  headers,
   timeout: 10000,
 });
 
@@ -25,7 +31,7 @@ export const getIssues = async () => {
 export const searchIssues = async (text) => {
   console.log("Searching issues...");
   const terms = [`repo:${repo}`];
-  if (text) terms.push(text);
+  if (text) terms.push(text.trim());
   try {
     const response = await api.get(`search/issues`, {
       params: {

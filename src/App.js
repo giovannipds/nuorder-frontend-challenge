@@ -4,10 +4,12 @@ import "./App.css";
 import AsyncSelect from "react-select/async";
 import { searchIssues } from "./services/issues";
 import debounce from "lodash.debounce";
+import Color from "color";
 
 function App() {
+  const [searchTerm, setSearchTerm] = useState("");
   const [issue, setIssue] = useState("");
-  const delay = 600;
+  const delay = 500;
 
   const loadOptions = useCallback(
     debounce((inputValue, callback) => {
@@ -19,34 +21,73 @@ function App() {
   const getOptions = async (inputValue) => {
     const issues = await searchIssues(inputValue);
     const options = issues.map((issue) => {
-      return { label: issue.title, value: "" };
+      const { html_url, id, labels, number, title } = issue;
+      return { html_url, issueLabels: labels, label: title, number, value: id };
     });
     return options;
   };
 
-  const handleInputChange = (newValue) => {
-    const inputValue = newValue.replace(/\W/g, "");
-    setIssue(inputValue);
-    return inputValue;
+  const handleInputChange = (newValue) => setSearchTerm(newValue);
+
+  const handleChange = (issueOption) => {
+    setIssue(issueOption);
   };
 
   const customStyles = {
-    option: (provided, state) => ({
+    control: (provided) => ({
+      ...provided,
+      fontSize: 16,
+    }),
+    menuList: (provided) => ({
+      ...provided,
+      maxHeight: "calc(35vh);",
+    }),
+    option: (provided) => ({
       ...provided,
       fontSize: 14,
+      fontWeight: 600,
+      textAlign: "left",
     }),
   };
+
+  const formatOptionLabel = ({ issueLabels, label }) => (
+    <div>
+      <span className="Option-label">{label}</span>
+      {issueLabels.map((item, key) => {
+        const { color, description, name } = item;
+        const backgroundColor = `#${color}`;
+        const textColor = Color(backgroundColor).isDark() ? "#fff" : "#000";
+        return (
+          <small
+            className="Issue-label"
+            key={key}
+            style={{ backgroundColor, color: textColor }}
+            title={description}
+          >
+            {name}
+          </small>
+        );
+      })}
+    </div>
+  );
+
+  // const buttonRef = useRef(null);
+
+  // useEffect(() => {
+  //   if (buttonRef.current) buttonRef.current.focus();
+  // }, [issue]);
 
   return (
     <div className="App">
       <header className="App-header">
         <a
+          className="App-logo"
           href="https://nu.nuorder.com/index.html"
           rel="noopener noreferrer"
           target="_blank"
           title="Go to nuorder.com"
         >
-          <img src={logo} className="App-logo" alt="NuORDER" />
+          <img src={logo} alt="NuORDER" />
         </a>
       </header>
       <p>
@@ -65,26 +106,40 @@ function App() {
       <span className="Select-container">
         <AsyncSelect
           cacheOptions
+          formatOptionLabel={formatOptionLabel}
+          loadingMessage={() => "Wait, loading..."}
           loadOptions={loadOptions}
-          // menuIsOpen={issue}
-          noOptionsMessage={() => (issue ? "Found nothing" : "Type anything")}
+          // menuIsOpen={searchTerm}
+          onChange={handleChange}
+          noOptionsMessage={() => (searchTerm ? "Nothing" : "Type anything")}
           onInputChange={handleInputChange}
           placeholder="Search"
           styles={customStyles}
         />
       </span>
-      <footer>
-        <small>
+      {issue && (
+        <div className="Button-container">
           <a
-            className="App-link"
-            href="https://github.com/giovannipds"
-            target="_blank"
+            className="Button"
+            href={issue.html_url}
+            // ref={buttonRef}
             rel="noopener noreferrer"
-            title="See dev's GitHub"
+            target="_blank"
           >
-            Giovanni Pires
+            Go to Issue #{issue.number}
           </a>
-        </small>
+        </div>
+      )}
+      <footer className="Footer">
+        <a
+          className="App-link"
+          href="https://github.com/giovannipds"
+          target="_blank"
+          rel="noopener noreferrer"
+          title="See dev's GitHub"
+        >
+          Giovanni Pires
+        </a>
       </footer>
     </div>
   );

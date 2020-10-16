@@ -12,12 +12,16 @@
 }
 
 .App-logo {
+  outline: 0;
+}
+
+.App-logo img {
   height: 26px;
-  pointer-events: none;
 }
 
 .App-link {
   color: var(--primary);
+  outline: 0;
   opacity: 0.5;
   transition: 0.2s;
 }
@@ -36,4 +40,64 @@
   .Select-container {
     max-width: 50%;
   }
+}
+
+.Option-label {
+  margin-right: 1.5px;
+}
+
+.Issue-label {
+  border-radius: 2em;
+  display: inline-block;
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 18px;
+  margin: 1.5px;
+  padding-right: 7px;
+  padding-left: 7px;
+  vertical-align: bottom;
+}
+
+.Footer {
+  font-size: 14px;
+}
+
+.Button-container {
+  margin-bottom: 45px;
+  width: 100%;
+}
+
+.Button {
+  background-color: var(--primary);
+  border: 1px solid var(--primary);
+  color: var(--white);
+  display: block;
+  font-size: 0.8rem;
+  font-weight: bold;
+  letter-spacing: 2px;
+  outline: 0;
+  padding: 1em 3em 1.25em;
+  text-decoration: none;
+  text-transform: uppercase;
+  transition: background-color 0.4s, color 0.4s;
+  width: 100%;
+}
+
+@media (min-width: 768px) {
+  .Button {
+    display: inline-block;
+    width: auto;
+  }
+}
+
+.Button:focus,
+.Button:hover {
+  background-color: transparent;
+  color: var(--primary);
+  transition: background-color 0.2s, color 0.2s;
+}
+
+.Button:focus:active,
+.Button:hover:active {
+  background-color: rgba(0, 0, 0, 0.1);
 }
