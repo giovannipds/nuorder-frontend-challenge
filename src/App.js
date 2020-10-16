@@ -30,6 +30,13 @@ function App() {
     return inputValue;
   };
 
+  const customStyles = {
+    option: (provided, state) => ({
+      ...provided,
+      fontSize: 14,
+    }),
+  };
+
   return (
     <div className="App">
       <header className="App-header">
@@ -62,6 +69,7 @@ function App() {
             noOptionsMessage={() => (issue ? "Found nothing" : "Type anything")}
             onInputChange={handleInputChange}
             placeholder="Search"
+            styles={customStyles}
           />
         </span>
         <small>
